@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>70 anos da Maria Aparecida</title>
+<meta name="description" content="Envie as fotos da festa de 70 anos da Maria Aparecida Sandro.">
+<meta name="theme-color" content="#F2B705">
+<meta property="og:title" content="70 anos da Maria Aparecida Sandro">
+<meta property="og:description" content="Envie as fotos que você tirou na festa.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sol:#F2B705; --sol-dk:#C98F00; --sol-claro:#FFF6D6;
+    --semente:#2E2112; --muted:#6F6250; --papel:#FFFFFF; --linha:#E9E2D0;
+    --folha:#3F5F2A; --erro:#B23A23;
+    --serif:"DM Serif Display",Georgia,serif; --sans:Figtree,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--sol)}
+  body{font-family:var(--sans);color:var(--semente);background:var(--papel);min-height:100vh;
+       -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:3px solid var(--folha);outline-offset:3px}
+  .col{max-width:480px;margin:0 auto;padding:0 20px}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--sol);padding:40px 0 64px;text-align:center}
+  .setenta{display:flex;justify-content:center;align-items:center;gap:2px;height:172px}
+  .setenta .sete{font-family:var(--serif);font-size:190px;line-height:1;margin-top:18px;color:var(--semente)}
+  .setenta svg{width:150px;height:150px;overflow:visible}
+  .petalas{transform-origin:0 0;animation:abre 1.4s cubic-bezier(.2,.8,.2,1) both .15s}
+  @keyframes abre{from{transform:scale(.55) rotate(-40deg);opacity:0}to{transform:none;opacity:1}}
+  @media (prefers-reduced-motion:reduce){.petalas{animation:none}}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1;margin-top:18px;letter-spacing:-.01em}
+  .hero .sub{font-size:17px;margin-top:6px;color:#4A3818}
+  .contador{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:7px 14px;border-radius:99px;
+            background:rgba(46,33,18,.09);font-size:14px;font-weight:600;visibility:hidden}
+  .contador.on{visibility:visible}
+  .contador i{width:8px;height:8px;border-radius:50%;background:var(--folha)}
+
+  /* ---------- folha branca ---------- */
+  main{background:var(--papel);border-radius:28px 28px 0 0;margin-top:-28px;position:relative;
+       padding:32px 0 calc(130px + env(safe-area-inset-bottom))}
+  .intro{font-size:17px;line-height:1.55;color:var(--muted);max-width:36ch}
+  .passo{display:grid;grid-template-columns:32px 1fr;gap:14px;margin-top:30px}
+  .num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px;
+       background:var(--sol-claro);color:var(--semente);border:1.5px solid var(--sol)}
+  .passo.feito .num{background:var(--folha);border-color:var(--folha);color:#fff;font-size:0}
+  .passo.feito .num::after{content:"";width:12px;height:7px;border:solid #fff;border-width:0 0 2.5px 2.5px;transform:translateY(-2px) rotate(-45deg)}
+  .passo h2{font-size:18px;font-weight:700;line-height:32px}
+  .passo h2 span{font-weight:400;color:var(--muted)}
+  .passo .corpo{grid-column:2;margin-top:10px}
+  input[type=text],textarea{width:100%;font:inherit;font-size:17px;color:var(--semente);background:#FBF9F3;
+        border:1.5px solid var(--linha);border-radius:14px;padding:14px 16px;outline:none;transition:border-color .15s,background .15s}
+  input[type=text]:focus,textarea:focus{border-color:var(--sol-dk);background:#fff}
+  input::placeholder,textarea::placeholder{color:#A99C86}
+  textarea{resize:none;min-height:96px;line-height:1.45}
+
+  .escolher{display:flex;align-items:center;gap:14px;width:100%;cursor:pointer;text-align:left;
+            border:1.5px dashed var(--sol-dk);background:var(--sol-claro);border-radius:16px;padding:18px;font:inherit;color:inherit}
+  .escolher.arrastando{background:#FFEDB0}
+  .escolher .ico{flex:none;width:48px;height:48px;border-radius:14px;background:var(--sol);display:grid;place-items:center}
+  .escolher b{display:block;font-size:17px}
+  .escolher small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+  #arquivos{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+  .grade{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+  .grade:empty{display:none}
+  .th{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--linha)}
+  .th img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .3s}
+  .th.enviando img{filter:brightness(.6)}
+  .th .x{position:absolute;top:5px;right:5px;width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;
+         background:rgba(20,14,6,.6);color:#fff;font-size:17px;line-height:28px}
+  .th.enviando .x,.th.ok .x{display:none}
+  .th .sel{position:absolute;right:6px;bottom:6px;width:24px;height:24px;border-radius:50%;display:none;place-items:center}
+  .th.ok .sel{display:grid;background:var(--folha)}
+  .th.ok .sel::after{content:"";width:10px;height:6px;border:solid #fff;border-width:0 0 2px 2px;transform:translateY(-1px) rotate(-45deg)}
+  .th.err{outline:3px solid var(--erro);outline-offset:-3px}
+  .th .spin{position:absolute;inset:0;margin:auto;width:26px;height:26px;border-radius:50%;display:none;
+            border:3px solid rgba(255,255,255,.35);border-top-color:#fff;animation:gira .8s linear infinite}
+  .th.enviando .spin{display:block}
+  @keyframes gira{to{transform:rotate(360deg)}}
+
+  /* ---------- barra de ação ---------- */
+  .acao{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:14px 0 calc(14px + env(safe-area-inset-bottom));
+        background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--linha)}
+  .msg{font-size:14px;color:var(--muted);text-align:center;margin-bottom:10px}
+  .msg:empty{display:none}
+  .msg.erro{color:var(--erro);font-weight:600}
+  .btn{position:relative;overflow:hidden;width:100%;font:inherit;font-weight:700;font-size:18px;border:0;border-radius:16px;
+       padding:18px;cursor:pointer;background:var(--semente);color:#fff;transition:opacity .2s}
+  .btn:disabled{opacity:.35;cursor:default}
+  .btn.enviando{opacity:1}
+  .btn .prog{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--sol);transition:width .4s}
+  .btn.enviando{color:var(--semente);background:var(--sol-claro)}
+  .btn span{position:relative}
+
+  /* ---------- sucesso ---------- */
+  .fim{display:none;text-align:center;padding-top:8px}
+  body.terminou .form,body.terminou .acao{display:none}
+  body.terminou .fim{display:block}
+  .polaroids{position:relative;height:200px;margin:8px auto 26px;width:220px}
+  .polaroids figure{position:absolute;left:50%;top:10px;width:150px;padding:8px 8px 30px;background:#fff;
+        box-shadow:0 10px 30px -10px rgba(46,33,18,.45);border-radius:3px;margin-left:-75px}
+  .polaroids figure img{width:134px;height:134px;object-fit:cover;display:block}
+  .fim h2{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1}
+  .fim p{font-size:17px;line-height:1.55;color:var(--muted);margin:10px auto 0;max-width:30ch}
+  .btn.sec{background:transparent;color:var(--semente);border:1.5px solid var(--semente);margin-top:28px}
+
+  footer{text-align:center;font-size:13px;color:var(--muted);margin-top:44px}
+  footer .demo{display:block;margin-top:6px;color:var(--erro)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="col">
+    <div class="setenta" aria-label="70">
+      <span class="sete" aria-hidden="true">7</span>
+      <svg viewBox="-50 -50 100 100" aria-hidden="true" id="flor"></svg>
+    </div>
+    <h1>Maria Aparecida Sandro</h1>
+    <p class="sub">70 anos rodeada de quem ela ama</p>
+    <div class="contador" id="contador"><i></i><span id="contadorTxt"></span></div>
+  </div>
+</header>
+
+<main>
+  <div class="col">
+    <section class="form">
+      <p class="intro">Tirou fotos na festa? Envie aqui. Elas vão direto para o álbum da família.</p>
+
+      <div class="passo" id="p1">
+        <div class="num">1</div>
+        <h2><label for="nome">Seu nome</label></h2>
+        <div class="corpo"><input type="text" id="nome" maxlength="40" placeholder="Ex.: Ana, neta da Cida" autocomplete="name" enterkeyhint="next"></div>
+      </div>
+
+      <div class="passo" id="p2">
+        <div class="num">2</div>
+        <h2>Escolha as fotos</h2>
+        <div class="corpo">
+          <label class="escolher" for="arquivos" id="escolher">
+            <span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E2112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8.5 6l1.5-2.5h4L15.5 6"/></svg></span>
+            <span><b id="escolherTxt">Abrir galeria</b><small>Pode selecionar várias de uma vez</small></span>
+          </label>
+          <input type="file" id="arquivos" accept="image/*" multiple>
+          <div class="grade" id="grade"></div>
+        </div>
+      </div>
+
+      <div class="passo" id="p3">
+        <div class="num">3</div>
+        <h2><label for="recado">Recado para ela <span>(opcional)</span></label></h2>
+        <div class="corpo"><textarea id="recado" maxlength="500" placeholder="Parabéns, vó! Obrigado por tudo."></textarea></div>
+      </div>
+    </section>
+
+    <section class="fim" aria-live="polite">
+      <div class="polaroids" id="polaroids"></div>
+      <h2 id="fimTitulo">Fotos enviadas</h2>
+      <p id="fimTxt">Já estão no álbum da Maria Aparecida.</p>
+      <button class="btn sec" id="mais">Enviar mais fotos</button>
+    </section>
+
+    <footer>Com carinho, para os 70 anos da Maria Aparecida<span class="demo" id="demo" hidden>Modo demonstração: configure API_URL para enviar de verdade.</span></footer>
+  </div>
+</main>
+
+<div class="acao">
+  <div class="col">
+    <p class="msg" id="msg" role="status"></p>
+    <button class="btn" id="enviar" disabled><i class="prog" id="prog"></i><span id="enviarTxt">Escolha as fotos para enviar</span></button>
+  </div>
+</div>
+
+<script>
+/* =========  CONFIGURAÇÃO  =========
+   Cole aqui o link /exec do Apps Script (Implantar > App da Web). */
+const API_URL = '';
+/* ================================== */
+
+const LADO_MAX = 2560, QUALIDADE = 0.88, PARALELO = 2;
+const $ = id => document.getElementById(id);
+const DEMO = !API_URL;
+if (DEMO) $('demo').hidden = false;
+
+/* --- o "0" do 70: girassol com sementes em espiral áurea --- */
+(() => {
+  const svg = $('flor'), ns = 'http://www.w3.org/2000/svg';
+  const el = (tag, a, pai = svg) => { const e = document.createElementNS(ns, tag); for (const k in a) e.setAttribute(k, a[k]); pai.appendChild(e); return e; };
+  const g = el('g', {class: 'petalas'});
+  const pet = 'M0-49C9-40 9-29 0-21-9-29-9-40 0-49Z';
+  for (let i = 0; i < 16; i++) el('path', {d: pet, fill: '#C98F00', transform: `rotate(${i * 22.5 + 11.25}) scale(.94)`}, g);
+  for (let i = 0; i < 16; i++) el('path', {d: pet, fill: '#FFD43B', stroke: '#C98F00', 'stroke-width': .6, transform: `rotate(${i * 22.5})`}, g);
+  el('circle', {r: 24, fill: '#2E2112'});
+  for (let i = 1; i < 150; i++) {
+    const r = 22 * Math.sqrt(i / 150), a = i * 2.39996;
+    el('circle', {cx: (r * Math.cos(a)).toFixed(2), cy: (r * Math.sin(a)).toFixed(2), r: 1.05, fill: i % 4 ? '#5B3D1C' : '#8A5E2A'});
+  }
+})();
+
+/* --- quantas fotos já estão no álbum --- */
+function contar() {
+  const mostra = n => { if (n > 0) { $('contadorTxt').textContent = `${n} ${n > 1 ? 'fotos' : 'foto'} no álbum`; $('contador').classList.add('on'); } };
+  if (DEMO) return mostra(128);
+  fetch(API_URL + '?acao=contar').then(r => r.json()).then(d => d.ok && mostra(d.total)).catch(() => {});
+}
+contar();
+
+/* --- seleção de fotos --- */
+let fila = [];   // {file, el, url, estado: novo|enviando|ok|erro}
+
+function adicionar(files) {
+  for (const file of files) {
+    if (!file.type.startsWith('image/') && !/\.(heic|heif)$/i.test(file.name)) continue;
+    const url = URL.createObjectURL(file);
+    const el = document.createElement('div');
+    el.className = 'th';
+    el.innerHTML = `<img alt="" src="${url}"><span class="spin"></span><span class="sel"></span><button class="x" aria-label="Remover foto">×</button>`;
+    const item = {file, el, url, estado: 'novo'};
+    el.querySelector('.x').onclick = () => { fila = fila.filter(f => f !== item); el.remove(); URL.revokeObjectURL(url); atualizar(); };
+    $('grade').appendChild(el);
+    fila.push(item);
+  }
+  atualizar();
+}
+$('arquivos').addEventListener('change', e => { adicionar(e.target.files); e.target.value = ''; });
+
+// arrastar e soltar (computador)
+const zona = $('escolher');
+['dragenter', 'dragover'].forEach(t => zona.addEventListener(t, e => { e.preventDefault(); zona.classList.add('arrastando'); }));
+['dragleave', 'drop'].forEach(t => zona.addEventListener(t, e => { e.preventDefault(); zona.classList.remove('arrastando'); }));
+zona.addEventListener('drop', e => adicionar(e.dataTransfer.files));
+
+$('nome').addEventListener('input', atualizar);
+
+function atualizar(msgErro) {
+  const pend = fila.filter(f => f.estado === 'novo' || f.estado === 'erro').length;
+  const ok = fila.filter(f => f.estado === 'ok').length;
+  const enviando = fila.some(f => f.estado === 'enviando');
+  const falhas = fila.filter(f => f.estado === 'erro').length;
+
+  $('p1').classList.toggle('feito', $('nome').value.trim().length > 1);
+  $('p2').classList.toggle('feito', fila.length > 0);
+  $('escolherTxt').textContent = fila.length ? 'Adicionar mais fotos' : 'Abrir galeria';
+
+  const btn = $('enviar');
+  btn.disabled = enviando || pend === 0;
+  btn.classList.toggle('enviando', enviando);
+  $('prog').style.width = enviando ? `${Math.max(6, ok / fila.length * 100)}%` : '0';
+  $('enviarTxt').textContent =
+    enviando ? `Enviando ${Math.min(ok + 1, fila.length)} de ${fila.length}…` :
+    falhas ? `Tentar de novo (${falhas})` :
+    pend ? `Enviar ${pend} ${pend > 1 ? 'fotos' : 'foto'}` : 'Escolha as fotos para enviar';
+
+  const msg = $('msg');
+  msg.className = 'msg';
+  if (enviando) msg.textContent = 'Mantenha esta página aberta até terminar.';
+  else if (falhas) { msg.textContent = `${falhas} ${falhas > 1 ? 'fotos não foram enviadas' : 'foto não foi enviada'}. Confira a internet e toque em Tentar de novo.`; msg.classList.add('erro'); }
+  else msg.textContent = '';
+}
+
+/* reduz para no máx. 2560 px em JPEG: envio bem mais rápido no 4G da festa */
+function comprimir(file) {
+  return new Promise(resolve => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const k = Math.min(1, LADO_MAX / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/jpeg', QUALIDADE));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); const r = new FileReader(); r.onload = () => resolve(r.result); r.readAsDataURL(file); };
+    img.src = url;
+  });
+}
+
+async function enviarUma(item) {
+  item.estado = 'enviando'; item.el.className = 'th enviando'; atualizar();
+  try {
+    const dataUrl = await comprimir(item.file);
+    if (DEMO) await new Promise(r => setTimeout(r, 700));
+    else {
+      // sem header Content-Type => "text/plain": requisição simples, sem bloqueio de CORS
+      const r = await fetch(API_URL, {method: 'POST', body: JSON.stringify({
+        dataUrl, nomeOriginal: item.file.name.replace(/\.[^.]+$/, ''), convidado: $('nome').value, recado: $('recado').value
+      })});
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.erro);
+    }
+    item.estado = 'ok'; item.el.className = 'th ok';
+  } catch (e) {
+    item.estado = 'erro'; item.el.className = 'th err';
+  }
+  atualizar();
+}
+
+$('enviar').addEventListener('click', async () => {
+  const pend = fila.filter(f => f.estado === 'novo' || f.estado === 'erro');
+  let i = 0;
+  const trabalhador = async () => { while (i < pend.length) await enviarUma(pend[i++]); };
+  await Promise.all(Array.from({length: PARALELO}, trabalhador));
+  if (fila.length && fila.every(f => f.estado === 'ok')) concluir();
+});
+
+function concluir() {
+  const n = fila.length;
+  const pol = $('polaroids'); pol.innerHTML = '';
+  const angulos = [-9, 7, -2];
+  fila.slice(-3).forEach((f, k, arr) => {
+    const fig = document.createElement('figure');
+    const desloc = (k - (arr.length - 1) / 2) * 26;
+    fig.style.transform = `translateX(${desloc}px) rotate(${angulos[k]}deg)`;
+    fig.innerHTML = `<img alt="" src="${f.url}">`;
+    pol.appendChild(fig);
+  });
+  $('fimTitulo').textContent = n > 1 ? `${n} fotos enviadas` : '1 foto enviada';
+  $('fimTxt').textContent = 'Já estão no álbum da Maria Aparecida. Obrigado por fazer parte deste dia.';
+  document.body.classList.add('terminou');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  contar();
+}
+
+$('mais').onclick = () => {
+  fila.forEach(f => URL.revokeObjectURL(f.url));
+  fila = []; $('grade').innerHTML = ''; $('recado').value = '';
+  document.body.classList.remove('terminou'); atualizar();
+};
+</script>
+</body>
+</html>
